@@ -1,8 +1,11 @@
 package com.lete.land.landdal.service;
 
 import com.lete.land.landdal.entity.LandMangeApprove;
+import com.lete.land.landdal.entity.SysMuser;
 import com.lete.land.landdal.repository.LandMangeApproveRepository;
+import com.lete.land.landdal.repository.SysMuserRepository;
 import com.lete.land.landdal.util.RedisUtil;
+import com.lete.land.landdal.vo.SysMuserModel;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +32,9 @@ public class LandMangeApproveService {
 
     @Resource
     private LandMangeApproveRepository landMangeApproveRepository;
+
+    @Resource
+    private SysMuserRepository sysMuserRepository;
 
     @Resource
     private RedisUtil redisUtil;
@@ -76,6 +82,71 @@ public class LandMangeApproveService {
         Page<LandMangeApprove> list = landMangeApproveRepository.findAll(specification,pageable);
         return list;
     }
+
+  /*  public void getExcel(HttpServletRequest request, HttpServletResponse response) {
+        ServletOutputStream out = null;
+
+        try {
+            out = response.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ExcelWriter writer = new ExcelWriter(out, ExcelTypeEnum.XLSX, true);
+        try {
+            String fileName = new String(("UserInfo " + new SimpleDateFormat("yyyy-MM-dd").format(new Date()))
+                    .getBytes(), "UTF-8");
+//            Field field = SysMuserModel.class.getDeclaredField("name");
+//            ExcelProperty excelProperty = field.getAnnotation(ExcelProperty.class);
+//            InvocationHandler h = Proxy.getInvocationHandler(excelProperty);
+//            Field hfield = h.getClass().getDeclaredField("memberValues");
+//            hfield.setAccessible(true);
+//            Map memberValues = (Map)hfield.get(h);
+//            memberValues.put("value","反射");
+
+            Sheet sheet1 = new Sheet(1, 0, SysMuserModel.class);
+            sheet1.setSheetName("用户表");
+            response.setContentType("application/vnd.ms-excel");
+            response.setCharacterEncoding("utf-8");
+            response.setHeader("Content-disposition", "attachment;filename="+fileName+".xlsx");
+            writer.write(getListString(), sheet1);
+
+            out.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            writer.finish();
+            try {
+                out.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }*/
+
+
+    public List<SysMuserModel> getListString() {
+        List<SysMuser> musers = sysMuserRepository.findAll();
+
+        List<SysMuserModel> list = new ArrayList<SysMuserModel>();
+
+        for(SysMuser sysMuser : musers){
+            SysMuserModel sysMuserModel = new SysMuserModel();
+            sysMuserModel.setId(sysMuser.getId());
+            sysMuserModel.setAddress(sysMuser.getAddress());
+           // sysMuserModel.setName(sysMuser.getName());
+            sysMuserModel.setPassword(sysMuser.getPassword());
+            sysMuserModel.setQq(sysMuser.getQq());
+            sysMuserModel.setRoteType(sysMuser.getRoteType());
+            sysMuserModel.setSex(sysMuser.getSex());
+            // sysMuserModel.setSignTime(new SimpleDateFormat("yyyy-MM-DD HH:mm:ss").format(sysMuser.getSignTime()));
+
+            list.add(sysMuserModel);
+        }
+
+        return list;
+    }
+
+
 
 
 }

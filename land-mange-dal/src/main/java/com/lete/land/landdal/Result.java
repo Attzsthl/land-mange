@@ -17,12 +17,12 @@ public class Result {
     /**
      * 响应结果对象
      */
-    private LoginInfo loginInfo;
+    private LoginInfo data;
 
     public Result(int code, String message, LoginInfo loginInfo) {
         this.code = code;
         this.message = message;
-        this.loginInfo = loginInfo;
+        this.data = loginInfo;
     }
 
     public int getCode() {
@@ -41,11 +41,11 @@ public class Result {
         this.message = message;
     }
 
-    public LoginInfo getLoginInfo() {
-        return loginInfo;
+    public LoginInfo getData() {
+        return data;
     }
 
-    public void setLoginInfo(LoginInfo loginInfo) {
-        this.loginInfo = loginInfo;
+    public void setData(LoginInfo data) {
+        this.data = data;
     }
 }

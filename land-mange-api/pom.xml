@@ -47,17 +47,18 @@
             <scope>compile</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.lete.land</groupId>
-            <artifactId>land-service</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
+
 
         <dependency>
             <groupId>com.lete.land</groupId>
             <artifactId>land-security</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <version>1.1.2-beta4</version>
             <scope>compile</scope>
         </dependency>
 

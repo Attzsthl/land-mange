@@ -10,7 +10,7 @@ import com.lete.land.landdal.vo.LoginInfo;
  */
 public class ResultFactory {
     public static Result buildSuccessResult(LoginInfo data) {
-        return buidResult(ResultCode.SUCCESS, "成功", data);
+        return buidResult(ResultCode.LOGINSUCESS, "成功", data);
     }
 
     public static Result buildFailResult(String message) {

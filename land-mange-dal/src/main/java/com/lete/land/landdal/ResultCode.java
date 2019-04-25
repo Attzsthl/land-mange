@@ -7,7 +7,9 @@ public enum ResultCode {
     /**
      * 成功
      */
-    SUCCESS(200),
+    SUCCESS(0),
+
+    LOGINSUCESS(0),
     /**
      * 失败
      */

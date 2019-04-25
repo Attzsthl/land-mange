@@ -1,10 +1,8 @@
 package com.lete.land.landdal;
 
-import com.lete.land.landdal.entity.SysRole;
-import com.lete.land.landdal.service.SysRoleService;
+import com.lete.land.landdal.repository.DataRegPopulationRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -15,10 +13,11 @@ import java.util.List;
 @SpringBootTest
 public class LandDalApplicationTests {
    @Resource
-   private SysRoleService sysRoleService;
+   private DataRegPopulationRepository dataRegPopulationRepository;
     @Test
     public void contextLoads() {
-
+//        List<Object[]> list = dataRegPopulationRepository.getTemplate();
+//        System.out.println(list);
     }
 
 }

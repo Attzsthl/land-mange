@@ -7,13 +7,15 @@ import java.util.Set;
  * Created by WJ on 2019/3/29 0029
  */
 public class LoginInfo implements Serializable {
-    private Integer userId;
+    private Integer uuid;
 
-    private String userName;
+    private String name;
 
     private Set<String> roleList;
 
     private Set<String> permissionList;
+
+    private String token;
 
     public LoginInfo() {
     }
@@ -24,26 +26,42 @@ public class LoginInfo implements Serializable {
     }
 
     public LoginInfo(Integer userId, String userName, Set<String> roleList, Set<String> permissionList) {
-        this.userId = userId;
-        this.userName = userName;
+        this.uuid = userId;
+        this.name = userName;
         this.roleList = roleList;
         this.permissionList = permissionList;
     }
 
+    public Integer getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(Integer uuid) {
+        this.uuid = uuid;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     public Integer getUserId() {
-        return userId;
+        return uuid;
     }
 
     public void setUserId(Integer userId) {
-        this.userId = userId;
+        this.uuid = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Set<String> getRoleList() {

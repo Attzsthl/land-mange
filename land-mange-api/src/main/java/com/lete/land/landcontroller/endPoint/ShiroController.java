@@ -1,6 +1,7 @@
 package com.lete.land.landcontroller.endPoint;
 
 import com.alibaba.fastjson.JSONObject;
+import com.lete.land.landdal.MyResult;
 import com.lete.land.landdal.Result;
 import com.lete.land.landdal.entity.User;
 import com.lete.land.landdal.service.LoginService;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -47,7 +49,8 @@ public class ShiroController {
         try {
             subject.login(token);
             LoginInfo loginInfo = loginService.getLoginInfo(userInfo.getUsername());
-            return ResultFactory.buildSuccessResult(loginInfo);
+           return ResultFactory.buildSuccessResult(loginInfo);
+
         } catch (IncorrectCredentialsException e) {
             return ResultFactory.buildFailResult("密码错误");
         } catch (LockedAccountException e) {
@@ -61,6 +64,12 @@ public class ShiroController {
         return ResultFactory.buildFailResult("登陆失败");
     }
 
+    @RequestMapping(value = "/api/loginTest", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
+    @ResponseBody
+    public MyResult loginTest(@RequestBody User userInfo) {
+        System.out.println("hello");
+        return new MyResult();
+    }
     /**
      * 未登录，shiro应重定向到登录界面，此处返回未登录状态信息由前端控制跳转页面
      * @return

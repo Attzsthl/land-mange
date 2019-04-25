@@ -42,7 +42,10 @@ public class LoginService {
         for (SysPermission perm : sysPermissions) {
             permissionList.add(perm.getPermission());//权限存储
         }
+        LoginInfo loginInfo = new LoginInfo(user.getId(),user.getUsername(),roleList,permissionList);
+        loginInfo.setToken(String.valueOf(user.getId()));
+        loginInfo.setUuid(user.getId());
 
-        return  new LoginInfo(roleList,permissionList);
+        return loginInfo;
     }
 }
