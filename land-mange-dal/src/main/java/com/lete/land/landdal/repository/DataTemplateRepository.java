@@ -17,5 +17,8 @@ public interface DataTemplateRepository extends JpaRepository<DataTemplate,Strin
     @Query(value = "SELECT  column_name, column_comment FROM information_schema.columns WHERE table_schema ='land_mange' AND  table_name = ?1" ,nativeQuery = true)
     List<Object[]> findTemplateCommentsByTableName(String tableName);
 
-    DataTemplate findOneByIdAndName();
+    @Query(value = "SELECT table_head FROM d_template  d WHERE d.table_name = ?1",nativeQuery = true)
+    String findTableHeadByTableName(String tableName);
+
+    DataTemplate findByTableName(String tableName);
 }

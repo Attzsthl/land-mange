@@ -1,9 +1,12 @@
 package com.lete.land.landdal.vo.dataCenter;
 
-public class DataTemplateVo {
+import java.io.Serializable;
 
+public class DataTemplateVo implements Serializable {
 
-     private String columnName;
+    private static final long serialVersionUID = -5565938505678505506L;
+
+    private String columnName;
 
      private String columnComment;
 

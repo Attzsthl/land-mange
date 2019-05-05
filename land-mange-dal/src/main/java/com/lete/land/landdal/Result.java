@@ -25,6 +25,11 @@ public class Result {
         this.data = loginInfo;
     }
 
+    public Result(int code, String message) {
+        this.code = code;
+        this.message = message;
+    }
+
     public int getCode() {
         return code;
     }

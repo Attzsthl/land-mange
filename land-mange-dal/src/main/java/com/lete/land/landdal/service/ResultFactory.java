@@ -13,6 +13,11 @@ public class ResultFactory {
         return buidResult(ResultCode.LOGINSUCESS, "成功", data);
     }
 
+    public static Result buildSuccessResult(String message) {
+        return new Result(200,"message");
+    }
+
+
     public static Result buildFailResult(String message) {
         return buidResult(ResultCode.FAIL, message, null);
     }

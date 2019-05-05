@@ -19,6 +19,12 @@ public class DataTemplate {
     @Column(name = "table_name")
     private String tableName;
 
+    @Column(name = "table_head")
+    private String tableHead;
+
+    @Column(name = "reporting_period")
+    private String reportingPeriod;
+
     @Column(name = "id_deleted")
     private long idDeleted;
 
@@ -105,5 +111,21 @@ public class DataTemplate {
 
     public void setLastModifiedDate(Date lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
+    }
+
+    public String getTableHead() {
+        return tableHead;
+    }
+
+    public void setTableHead(String tableHead) {
+        this.tableHead = tableHead;
+    }
+
+    public String getReportingPeriod() {
+        return reportingPeriod;
+    }
+
+    public void setReportingPeriod(String reportingPeriod) {
+        this.reportingPeriod = reportingPeriod;
     }
 }
