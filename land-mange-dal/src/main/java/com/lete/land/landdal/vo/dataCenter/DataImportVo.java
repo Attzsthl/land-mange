@@ -9,13 +9,41 @@ public class DataImportVo implements Serializable {
 
     private static final long serialVersionUID = 2510180998320508070L;
 
+    private String templateId;
+
     private String templateName;
 
     private String reportingPeriod;
 
     private String year;
 
-    private String status;
+    private int status;
+
+    private String uploadStatus;
+
+    public DataImportVo(String templateId,String templateName, String reportingPeriod, String year, int status) {
+        this.templateId = templateId;
+        this.templateName = templateName;
+        this.reportingPeriod = reportingPeriod;
+        this.year = year;
+        this.status = status;
+    }
+
+    public String getTemplateId() {
+        return templateId;
+    }
+
+    public void setTemplateId(String templateId) {
+        this.templateId = templateId;
+    }
+
+    public String getUploadStatus() {
+        return uploadStatus;
+    }
+
+    public void setUploadStatus(String uploadStatus) {
+        this.uploadStatus = uploadStatus;
+    }
 
     public String getTemplateName() {
         return templateName;
@@ -41,11 +69,11 @@ public class DataImportVo implements Serializable {
         this.reportingPeriod = reportingPeriod;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 }

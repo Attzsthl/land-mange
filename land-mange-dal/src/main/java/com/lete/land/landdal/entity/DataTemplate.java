@@ -1,9 +1,11 @@
 package com.lete.land.landdal.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "d_template")
@@ -42,6 +44,17 @@ public class DataTemplate {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date lastModifiedDate;
 
+    @OneToMany(mappedBy = "dataTemplate")
+    @JsonBackReference
+    List<DataTemplateDeatil> deatilList;
+
+    public List<DataTemplateDeatil> getDeatilList() {
+        return deatilList;
+    }
+
+    public void setDeatilList(List<DataTemplateDeatil> deatilList) {
+        this.deatilList = deatilList;
+    }
 
     public String getId() {
         return id;

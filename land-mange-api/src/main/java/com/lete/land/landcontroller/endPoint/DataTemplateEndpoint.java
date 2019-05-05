@@ -9,9 +9,12 @@ import com.lete.land.landdal.Result;
 import com.lete.land.landdal.entity.DataRegPopulation;
 import com.lete.land.landdal.entity.DataTemplate;
 import com.lete.land.landdal.entity.LandMangeApprove;
+import com.lete.land.landdal.entity.SysMuser;
 import com.lete.land.landdal.service.DataRegPopulationService;
 import com.lete.land.landdal.service.DataTemplateService;
+import com.lete.land.landdal.vo.DataRegPopulationModel;
 import com.lete.land.landdal.vo.SysMuserModel;
+import com.lete.land.landdal.vo.dataCenter.DataImportVo;
 import com.lete.land.landdal.vo.dataCenter.DataTemplateVo;
 import com.lete.land.landdal.vo.dataCenter.TemplateRequestVo;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -21,6 +24,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
@@ -73,18 +77,22 @@ public class DataTemplateEndpoint {
         return dataTemplateService.editTemplate(templateRequestVo.getTableName(), templateRequestVo.getTemplates());
     }
 
-    @RequestMapping(value = "/api/getExcel",method = RequestMethod.GET)
-    public void getTemplateExcelData(HttpServletRequest servletRequest, HttpServletResponse response)
-    {
-       // List<ExcelExportEntity> columnList = dataTemplateService.getTemplateComments();
-       //查询出所有的表头
-        // List<DataTemplateVo> tableHead = dataTemplateService.
-        //设置表头
-       //ExcelExportEntity colEntiy1 = new ExcelExportEntity("序号","id");
+    @RequestMapping(value = "/api/template-import-page", method = RequestMethod.GET)
+    @ResponseBody
+    public Page<DataImportVo> getTemplateImportPage(@RequestParam(name = "townId", required = false) String townId,
+                                                    @PageableDefault Pageable pageable) {
+        Page<DataImportVo> list = dataTemplateService.getTemplateDetailPage(townId, pageable);
+        return list;
+    }
 
-       //设置数据
+    @RequestMapping(value = "/api/readExcel", method = RequestMethod.POST)
+    @ResponseBody
+    public Result readExcelWithSheets(MultipartFile excel,
+                                      @RequestParam(name = "templateId")String templateId,
+                                      @RequestParam(name = "year")String year){
+        Result result = dataTemplateService.importExcel(excel,templateId,year);
+        return result;
 
-        //导出
     }
 
 

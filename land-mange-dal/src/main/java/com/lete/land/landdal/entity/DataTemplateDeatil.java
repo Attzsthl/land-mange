@@ -9,31 +9,30 @@ public class DataTemplateDeatil {
  @Id
  @Column(name = "id")
   private String id;
- @Column(name = "template_id")
-  private String templateId;
  @Column(name = "town_id")
   private String townId;
  @Column(name = "year")
   private String year;
  @Column(name = "status")
   private Integer status;
+ @ManyToOne
+ @JoinColumn(name = "template_id")
+ private DataTemplate dataTemplate;
 
+    public DataTemplate getDataTemplate() {
+        return dataTemplate;
+    }
 
-  public String getId() {
+    public void setDataTemplate(DataTemplate dataTemplate) {
+        this.dataTemplate = dataTemplate;
+    }
+
+    public String getId() {
     return id;
   }
 
   public void setId(String id) {
     this.id = id;
-  }
-
-
-  public String getTemplateId() {
-    return templateId;
-  }
-
-  public void setTemplateId(String templateId) {
-    this.templateId = templateId;
   }
 
 
