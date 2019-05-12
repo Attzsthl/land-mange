@@ -14,7 +14,7 @@ public class ResultFactory {
     }
 
     public static Result buildSuccessResult(String message) {
-        return new Result(200,"message");
+        return new Result(300,message);
     }
 
 

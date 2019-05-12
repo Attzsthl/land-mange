@@ -27,6 +27,9 @@ public class User implements Serializable {
 
     private String username;
 
+    @Column(name = "town_id")
+    private String townId;
+
 
     public int getId() {
         return id;
@@ -75,6 +78,14 @@ public class User implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getTownId() {
+        return townId;
+    }
+
+    public void setTownId(String townId) {
+        this.townId = townId;
     }
 
     /**

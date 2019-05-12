@@ -1,5 +1,6 @@
 package com.lete.land.landdal.entity;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -7,11 +8,15 @@ import java.util.Date;
 
 @Entity
 @Table(name = "d_reg_population")
+@GenericGenerator(name = "jpa-uuid", strategy = "uuid")
 public class DataRegPopulation {
 
     @Id
+    @GeneratedValue(generator = "jpa-uuid")
     @Column(name = "id")
     private String id;
+    @Column(name = "name")
+    private String name;
     @Column(name = "id_card")
     private String idCard;
     @Column(name = "sex")
@@ -29,6 +34,8 @@ public class DataRegPopulation {
     private Integer socialSecurityType;
     @Column(name = "year")
     private String year;
+    @Column(name = "town_id")
+    private String townId;
 
     public String getId() {
         return id;
@@ -38,6 +45,13 @@ public class DataRegPopulation {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getIdCard() {
         return idCard;
@@ -106,5 +120,13 @@ public class DataRegPopulation {
 
     public void setSocialSecurityType(Integer socialSecurityType) {
         this.socialSecurityType = socialSecurityType;
+    }
+
+    public String getTownId() {
+        return townId;
+    }
+
+    public void setTownId(String townId) {
+        this.townId = townId;
     }
 }

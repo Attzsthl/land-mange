@@ -11,6 +11,8 @@ public class LoginInfo implements Serializable {
 
     private String name;
 
+    private String townId;
+
     private Set<String> roleList;
 
     private Set<String> permissionList;
@@ -30,6 +32,14 @@ public class LoginInfo implements Serializable {
         this.name = userName;
         this.roleList = roleList;
         this.permissionList = permissionList;
+    }
+
+    public String getTownId() {
+        return townId;
+    }
+
+    public void setTownId(String townId) {
+        this.townId = townId;
     }
 
     public Integer getUuid() {

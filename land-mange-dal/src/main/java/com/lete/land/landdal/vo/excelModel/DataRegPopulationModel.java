@@ -1,4 +1,4 @@
-package com.lete.land.landdal.vo;
+package com.lete.land.landdal.vo.excelModel;
 
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.metadata.BaseRowModel;

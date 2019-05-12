@@ -45,6 +45,7 @@ public class LoginService {
         LoginInfo loginInfo = new LoginInfo(user.getId(),user.getUsername(),roleList,permissionList);
         loginInfo.setToken(String.valueOf(user.getId()));
         loginInfo.setUuid(user.getId());
+        loginInfo.setTownId(user.getTownId());
 
         return loginInfo;
     }

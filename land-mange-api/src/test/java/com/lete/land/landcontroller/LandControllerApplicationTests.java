@@ -70,7 +70,6 @@ public class LandControllerApplicationTests {
 
     @Test
     public void alterColumnTest() {
-       // sysPermissionService.alterTemplate("sex","性别注释");
     }
 
 }
