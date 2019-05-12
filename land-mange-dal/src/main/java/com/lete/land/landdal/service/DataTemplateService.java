@@ -51,6 +51,9 @@ public class DataTemplateService {
     @Resource
     private DataLandUseTypeService dataLandUseTypeService;
 
+
+
+
     public List<DataTemplateVo> getTemplateJson() {
         List<Object[]> objects = dataTemplateRepository.findTemplateCommentsByTableName("d_land_use_type");
         List<DataTemplateVo> list = new ArrayList<>();
@@ -168,6 +171,9 @@ public class DataTemplateService {
             }else if(templateId.equals("2")) {
                 List<Object> data = readExcel(excel,new DataLandUseTypeModel());
                 dataLandUseTypeService.transferAndSave(data,year,townId);
+            }else if(templateId.equals("3")) {
+
+
             }
 
             DataTemplateDeatil  dataTemplateDeatil = dataTemplateDetailRepository.findByTemplateIdAndYearAndTownId(templateId,year,townId);
